@@ -1,0 +1,167 @@
+﻿@model EditDetailsViewModel
+
+@{
+    ViewBag.Title = "Edit Page";
+}
+
+
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h1> <span class="fa fa-cog"></span> Dashboard <small>Edit Student</small></h1>
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown create">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Create
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Add Pages</a>
+                        <a class="dropdown-item" href="#">Add Post</a>
+                        <a class="dropdown-item" href="#">Add User</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="breacrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html"> Dashboard</a> / </li>
+            <li> Posts / </li>
+            <li class="active"> Edit</li>
+        </ol>
+    </div>
+</section>
+
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="index.html" class="list-group-item list-group-item-action active main-color-bg">
+                        <i class="fa fa-cog"></i> Dashboard
+                    </a>
+                    <a href="pages.html" class="list-group-item list-group-item-action"> <i class="fa fa-book"></i> Pages <span class="badge badge-primary badge-pill">3</span></a>
+                    <a href="users.html" class="list-group-item list-group-item-action"><i class="fa fa-user-circle" aria-hidden="true"></i> Users <span class="badge badge-primary badge-pill">14</span></a>
+                    <a href="posts.html" class="list-group-item list-group-item-action"><i class="fa fa-pencil"></i> Posts <span class="badge badge-primary badge-pill">20</span></a>
+
+                </div>
+
+                <div class="card card-body mt-3">
+                    <h4>Disk Space Used</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                    </div>
+                </div>
+                <div class="card card-body">
+                    <h4>Bandwidth Used</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading main-color-bg">
+                        <h3 class="parnel-title p-3">Edit User</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="card card-body">
+                            <form asp-controller="home" asp-action="edit" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input hidden asp-for="Id" />
+                                    <input hidden asp-for="ExistingPath" />
+
+                                    <label asp-for="Name"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Gender"></label>
+                                    <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="DateOfBirth"></label>
+                                    <input type="date" class="form-control" />
+                                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PhoneNumber"></label>
+                                    <input asp-for="PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="HealthCondition"></label>
+                                    <input asp-for="HealthCondition" class="form-control" />
+                                    <span asp-validation-for="HealthCondition" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Address"></label>
+                                    <input asp-for="Address" class="form-control" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="MaritalStatus"></label>
+                                    <select asp-for="MaritalStatus" class="form-control" asp-items="Html.GetEnumSelectList<MaritalStatus>()"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Status"></label>
+                                    <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<Status>()"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="AdmissionType"></label>
+                                    <select asp-for="AdmissionType" class="form-control" asp-items="Html.GetEnumSelectList<AddmissionType>()"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Nationalty"></label>
+                                    <select asp-for="Nationalty" class="form-control" asp-items="Html.GetEnumSelectList<Nationality>()"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Photo"></label>
+                                    <input asp-for="Photo" class="form-control" />
+                                </div>
+                                <hr />
+                                <h3 class="text-center">Next Of Kin</h3>
+
+                                <div class="form-group">
+                                    <label asp-for="NextOFKinName"></label>
+                                    <input asp-for="NextOFKinName" class="form-control" />
+                                    <span asp-validation-for="NextOFKinName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NextOfKinAddress"></label>
+                                    <input asp-for="NextOfKinAddress" class="form-control" />
+                                    <span asp-validation-for="NextOfKinAddress" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NextOfKinNumber"></label>
+                                    <input asp-for="NextOfKinNumber" class="form-control" />
+                                    <span asp-validation-for="NextOfKinNumber" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-dark">Save!</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

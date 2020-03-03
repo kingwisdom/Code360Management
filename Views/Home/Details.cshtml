@@ -1,0 +1,114 @@
+﻿@model HomeDetailsViewModel
+
+
+@{
+    ViewBag.Title = "Employee Details";
+    var photoPath = "~/img/" + (Model.student.Photo ?? "no-image.png");
+}
+
+
+@*@{
+        var employee = ViewData["Employee"] as EmployeeManagement.Models.Employee;
+    }*@
+
+<section id="breacrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active">Dashboard / @Model.PageTitle</li>
+        </ol>
+    </div>
+</section>
+
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="index.html" class="list-group-item list-group-item-action active main-color-bg">
+                        <i class="fa fa-cog"></i> Dashboard
+                    </a>
+                    <a href="pages.html" class="list-group-item list-group-item-action"> <i class="fa fa-book"></i> Pages <span class="badge badge-primary badge-pill">3</span></a>
+                    <a href="users.html" class="list-group-item list-group-item-action"><i class="fa fa-user-circle" aria-hidden="true"></i> Users <span class="badge badge-primary badge-pill">14</span></a>
+                    <a href="posts.html" class="list-group-item list-group-item-action"><i class="fa fa-pencil"></i> Posts <span class="badge badge-primary badge-pill">20</span></a>
+
+                </div>
+
+                <div class="card card-body mt-3">
+                    <h4>Disk Space Used</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                    </div>
+                </div>
+                <div class="card card-body">
+                    <h4>Bandwidth Used</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+
+
+                <!-- user table  -->
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+
+                            <div class="card">
+                                <img class="card-img-top" src="@photoPath" alt="Card image cap" asp-append-version="true">
+                                <div class="card-body">
+                                    <h5 class="card-title">@Model.student.Name</h5>
+                                    <div class="card-text">
+                                        <p>Email: @Model.student.Email &nbsp; | &nbsp; Phone: @Model.student.PhoneNumber </p>
+                                        <p>Address: @Model.student.Address</p>
+                                        <p>Marital Status: @Model.student.MaritalStatus &nbsp; | &nbsp; Health: @Model.student.HealthCondition </p>
+                                        <p>Nationality: @Model.student.Nationalty</p>
+                                        <p>Status: @Model.student.Status &nbsp; | &nbsp; Admission Type: @Model.student.AdmissionType </p>
+                                    </div>
+
+                                    <h3 class="text-center">Next Of Kin Details</h3>
+                                    <p>@Model.student.NextOFKinName</p>
+                                    <p>@Model.student.NextOfKinNumber</p>
+                                    <p>@Model.student.NextOfKinAddress</p>
+                                    <p class="text-center">
+                                        <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*<a asp-controller="home" asp-action="details" asp-route-id="@emp.Id" class="btn btn-primary">View</a>*@
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+@section Scripts{
+
+    @if (ViewBag.Message != null)
+    {
+        <script>
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        }
+        </script>
+    }
+}
